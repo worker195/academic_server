@@ -18,16 +18,20 @@ const client = new MongoClient(uri, {
 app.use(cors());
 app.use(express.json());
 
-// Connect to MongoDB
-(async () => {
+const connectDB = async () => {
     try {
         await client.connect();
         console.log("Connected to MongoDB");
     } catch (error) {
         console.error("Error connecting to MongoDB:", error);
+        process.exit(1);  // Stop the app if MongoDB connection fails
     }
-})();
+};
 
+// Call the connectDB function at the start of the application
+connectDB();
+
+// Wait for the MongoDB connection before setting up routes
 const db = client.db("academia");
 
 // Route to get all users
@@ -92,7 +96,7 @@ app.post("/users/:userid/courses", async (req, res) => {
     }
 });
 
-// Start the server
+// Start the server after MongoDB connection
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });
