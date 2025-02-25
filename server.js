@@ -10,16 +10,20 @@ const client = new MongoClient(uri);
 app.use(cors());
 app.use(express.json());
 
-(async () => {
+let db;
+
+async function connectDB() {
     try {
         await client.connect();
         console.log("Connected to MongoDB");
+        db = client.db("academia");
     } catch (error) {
         console.error("Error connecting to MongoDB:", error);
+        process.exit(1); // Exit the app if the connection fails
     }
-})();
+}
 
-const db = client.db("academia");
+connectDB();
 
 app.get("/users", async (req, res) => {
     try {
