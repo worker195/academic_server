@@ -2,11 +2,11 @@ const express = require("express");
 const { MongoClient } = require("mongodb");
 
 const app = express();
-
+const cors = require('cors');
+app.use(cors());
 
 const port = 3000;
-const uri = "mongodb+srv://softwarep828:m3Ys5kfxBlITF2JZ@cluster0.c4nc4.mongodb.net/?retryWrites=true&w=majority&ssl=true";
-
+const uri = "mongodb+srv://softwarep828:m3Ys5kfxBlITF2JZ@cluster0.c4nc4.mongodb.net/?retryWrites=true&w=majority";
 const client = new MongoClient(uri);
 
 async function getAllUsers(req, res) {
