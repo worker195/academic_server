@@ -328,6 +328,11 @@ app.get("/courses", getAllCourses);
 app.get("/researches", getAllResearches);
 
 
+app.get("/", async (req, res) => {
+    res.json("server works");
+});
+
+
 
 
 app.listen(port, () => {
