@@ -5,7 +5,8 @@ const app = express();
 
 
 const port = 3000;
-const uri = "mongodb+srv://softwarep828:m3Ys5kfxBlITF2JZ@cluster0.c4nc4.mongodb.net/?retryWrites=true&w=majority";
+const uri = "mongodb+srv://softwarep828:m3Ys5kfxBlITF2JZ@cluster0.c4nc4.mongodb.net/?retryWrites=true&w=majority&ssl=true";
+
 const client = new MongoClient(uri);
 
 async function getAllUsers(req, res) {
