@@ -4,8 +4,9 @@ const { MongoClient } = require("mongodb");
 const app = express();
 
 
+const port = 3000;
 const uri = "mongodb+srv://softwarep828:m3Ys5kfxBlITF2JZ@cluster0.c4nc4.mongodb.net/?retryWrites=true&w=majority";
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+const client = new MongoClient(uri);
 
 async function getAllUsers(req, res) {
     try {
@@ -329,5 +330,5 @@ app.get("/researches", getAllResearches);
 
 
 app.listen(3000, () => {
-    console.log(`Server running on http://localhost:3000`);
+    console.log(`Server running on http://localhost:${port}`);
 });
